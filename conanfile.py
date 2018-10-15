@@ -17,15 +17,9 @@ class Issue3721Conan(ConanFile):
     generators = "cmake", "cmake_find_package", "cmake_paths"
     requires = (
         "is-msgs/1.1.8@is/stable",
-        "boost/1.66.0@conan/stable",
-        "spdlog/1.1.0@bincrafters/stable",
     )
 
     exports_sources = "*"
-
-    def configure(self):
-        self.options["boost"].shared = True
-        self.options["fmt"].shared = True
 
     def build(self):
         cmake = CMake(self, generator='Ninja')
